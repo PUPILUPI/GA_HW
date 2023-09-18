@@ -10,8 +10,8 @@ public class Bot extends Player {
         while (flag) {
             int x = random.nextInt(10) + 1;
             int y = random.nextInt(10) + 1;
-            System.out.println("Бот походил " + (char) (y + 96) + x);
             if (enemyField.getField()[x][y].equals("-")) {
+                System.out.println("Бот походил " + (char) (y + 96) + x);
                 return new int[]{x, y};
             }
         }

@@ -38,10 +38,10 @@ public abstract class Player {
 
     public void placeShips() {
         Random random = new Random();
+        placeQuadrupleShips(random);
         placeSingleShips(random);
         placeDoubleShips(random);
         placeTripleShips(random);
-        placeQuadrupleShips(random);
     }
 
     private void placeSingleShips(Random random) {
