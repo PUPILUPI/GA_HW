@@ -1,6 +1,6 @@
-package ru.belov.battleship.players;
+package ru.belov.hw1.players;
 
-import ru.belov.battleship.Battlefield;
+import ru.belov.hw1.Battlefield;
 
 import java.util.Random;
 
@@ -273,10 +273,6 @@ public abstract class Player {
 
     private boolean checkOutOfBounds(int x, int y, String[][] bf) {
         return x < bf.length && y < bf.length && x > 1 && y > 1;
-    }
-
-    public Battlefield getEnemyField() {
-        return enemyField;
     }
 
     public int getHits() {

@@ -1,4 +1,4 @@
-package ru.belov.battleship;
+package ru.belov.hw1;
 
 public class Battlefield {
     private String[][] field = new String[11][11];

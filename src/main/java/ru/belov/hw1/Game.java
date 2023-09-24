@@ -1,8 +1,8 @@
-package ru.belov.battleship;
+package ru.belov.hw1;
 
-import ru.belov.battleship.players.Bot;
-import ru.belov.battleship.players.Player;
-import ru.belov.battleship.players.User;
+import ru.belov.hw1.players.Bot;
+import ru.belov.hw1.players.Player;
+import ru.belov.hw1.players.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Game {
         startMove();
     }
 
-    public void startMove() {
+    private void startMove() {
         int indexOfMove = counter % 2;
         int indexOfApprove = 0;
         Player movePlayer = players.get(indexOfMove);

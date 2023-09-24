@@ -1,4 +1,4 @@
-package ru.belov.battleship.players;
+package ru.belov.hw1.players;
 import java.util.Scanner;
 
 public class User extends Player {
