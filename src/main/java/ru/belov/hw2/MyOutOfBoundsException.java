@@ -12,6 +12,7 @@ public class MyOutOfBoundsException extends Exception{
 
     @Override
     public String getMessage() {
+        // добавляем название класса к ошибке
         return "MyArrayListException: " + super.getMessage();
     }
 }
