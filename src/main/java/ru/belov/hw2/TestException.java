@@ -1,5 +1,6 @@
 package ru.belov.hw2;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestException {
