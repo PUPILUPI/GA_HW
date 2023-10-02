@@ -11,12 +11,13 @@ public class CommandHandler {
 
     public void showMenu() {
         try {
-            System.out.println("Доступные операции: \n" +
-                    "<абсолютный путь к файлу> -create \n" +
-                    "                          -delete \n" +
-                    "                          -read \n" +
-                    "                          -write \"<содержимое>\" \n" +
-                    "!ex - выйти ");
+            System.out.println("""
+                    Доступные операции:\s
+                    <абсолютный путь к файлу> -create\s
+                                              -delete\s
+                                              -read\s
+                                              -write "<содержимое>"\s
+                    !ex - выйти\s""");
             System.out.println("Введите, что необходимо сделать:");
             executeCommand(readCommand());
             showMenu();
@@ -45,7 +46,7 @@ public class CommandHandler {
     }
 
     private void executeCommand(Command command) throws IOException {
-        switch (command.getCommand()) {
+        switch (command.command()) {
             case CREATE -> createFile(command);
             case DELETE -> deleteFile(command);
             case READ -> readFile(command);
@@ -104,7 +105,7 @@ public class CommandHandler {
     }
 
     private void readFile(Command command) throws IOException {
-        File file = new File(command.getPath());
+        File file = new File(command.path());
             BufferedReader reader = new BufferedReader(new FileReader(file));
             StringBuilder stringBuilder = new StringBuilder();
             String line;
@@ -115,21 +116,21 @@ public class CommandHandler {
         System.out.println(stringBuilder);
     }
     private void deleteFile(Command command) {
-        File file = new File(command.getPath());
+        File file = new File(command.path());
         if(file.delete()) {
             System.out.println("Файл успешно удален.");
         }
     }
 
     private void writeFile(Command command) throws IOException {
-        FileWriter writer = new FileWriter(command.getPath());
-        writer.write(command.getContent());
+        FileWriter writer = new FileWriter(command.path());
+        writer.write(command.content());
         writer.close();
         System.out.println("Информация в файл успешно записана.");
     }
 
     private void createFile(Command command) throws IOException {
-        File file = new File(command.getPath());
+        File file = new File(command.path());
         if(file.createNewFile()) {
             System.out.println("файл успешно создан.");
         }
