@@ -15,6 +15,7 @@ public class TestSet {
     TestSet(Set<Integer> set) {
         this.set = set;
         learnOperations();
+        LinkedList<String> list = new LinkedList<>();
     }
 
     public static void main(String[] args) {
