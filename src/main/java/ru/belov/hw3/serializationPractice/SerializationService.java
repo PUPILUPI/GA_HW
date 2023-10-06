@@ -11,7 +11,6 @@ public class SerializationService {
         people.add(new Person("Мария", 20));
         people.add(new Person("Алексей", 35));
         people.add(new Person("Егор", 70));
-
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("\\Users\\Xiaomi\\Desktop\\Теор.вопросы_greenAtom\\3ье_занятие\\people.dat"))) {
             outputStream.writeObject(people);
         } catch (IOException e) {
