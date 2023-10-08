@@ -31,7 +31,6 @@ public class StreamHandler {
         developers.stream()
                 .filter(developer -> developer.languages.stream().anyMatch(lang -> filteredLanguages.contains(lang)))
                 .forEach(dev -> System.out.println(dev.name));
-
     }
 
 }
