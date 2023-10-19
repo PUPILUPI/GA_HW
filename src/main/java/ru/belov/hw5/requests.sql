@@ -79,3 +79,37 @@ FROM trainee.t_competition c
          INNER JOIN trainee.t_result r USING (competition_id)
 WHERE r.result = (SELECT MAX(result) FROM trainee.t_result WHERE city = 'Москва')
   AND c.city = 'Москва';
+-- #16 - Вычислите минимальный год рождения спортсменов, которые имеют 1 разряд.
+SELECT MIN(year_of_birth)
+FROM trainee.t_sportsman
+WHERE rank = 1;
+-- #17 - Определите имена спортсменов, у которых личные рекорды совпадают с результатами,
+-- установленными 12-05-2014.
+SELECT s.sportsman_name
+FROM trainee.t_sportsman s
+         INNER JOIN trainee.t_sportsman_record sr USING (sportsman_id)
+WHERE sr.record_value IN (SELECT world_record FROM trainee.t_discipline WHERE set_date = '2014-05-12');
+-- #18 - Выведите наименования соревнований, у которых дата установления мирового рекорда совпадает
+-- с датой проведения соревнований в Москве 12-05-2014.(не особо понятен запрос, выведу все соревнования на которых был поставлен рекорд,
+-- то есть дата установления рекорда совпадает с датой проведения соревнования)
+SELECT DISTINCT c.competition_name
+FROM trainee.t_competition c
+         INNER JOIN trainee.t_competitions_disciplines cd USING (competition_id)
+         INNER JOIN trainee.t_discipline d ON cd.discipline_id = d.discipline_id
+WHERE c.hold_date = d.set_date;
+-- #19 - Вычислите средний результат каждого из спортсменов.
+SELECT s.sportsman_id, s.sportsman_name, AVG(sr.record_value) AS avg_result
+FROM trainee.t_sportsman s
+         INNER JOIN trainee.t_sportsman_record sr ON s.sportsman_id = sr.sportsman_id
+GROUP BY s.sportsman_id, s.sportsman_name;
+-- #20 - Выведите годы рождения спортсменов, у которых результат, показанный в Москве
+-- выше среднего по всем спортсменам;
+SELECT s.year_of_birth
+FROM trainee.t_competition
+         INNER JOIN trainee.t_result r USING (competition_id)
+         INNER JOIN trainee.t_sportsman s USING (sportsman_id)
+WHERE city = 'Москва'
+  AND r.result > (SELECT AVG(r.result)
+                  FROM trainee.t_competition
+                           INNER JOIN trainee.t_result r USING (competition_id)
+                  WHERE city = 'Москва');
