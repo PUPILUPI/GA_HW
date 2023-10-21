@@ -1,0 +1,5 @@
+  datasource:
+    url: jdbc:postgresql://localhost:5433/jdbc_homework
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: aA5914190
