@@ -1,5 +1,4 @@
 CREATE SCHEMA IF NOT EXISTS homework;
-drop table homework."user";
 CREATE TABLE IF NOT EXISTS homework.user
 (
     id          SERIAL PRIMARY KEY,

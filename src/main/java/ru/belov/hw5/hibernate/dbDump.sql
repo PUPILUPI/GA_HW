@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS homework.user
     first_name  VARCHAR NOT NULL,
     last_name   VARCHAR NOT NULL,
     birth_date  DATE,
-    salary      NUMERIC(2)
+    salary      NUMERIC(1000,2)
 );

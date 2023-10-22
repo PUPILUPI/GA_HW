@@ -1,14 +1,29 @@
 package ru.belov.hw5.jdbc.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "user", schema = "homework")
 public class User {
-    private long id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "second_name")
     private String secondName;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "birth_date")
     private LocalDate birthDate;
+    @Column(name = "salary")
     private Double salary;
+    public User() {
+
+    }
 
     @Override
     public String toString() {
@@ -21,6 +36,23 @@ public class User {
                 ", salary=" + salary +
                 '}';
     }
+
+    public User(long id, String secondName, String firstName, String lastName, LocalDate birthDate, double salary) {
+        this.id = id;
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.salary = salary;
+    }
+    public User(String secondName, String firstName, String lastName, LocalDate birthDate, double salary) {
+        this.secondName = secondName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.salary = salary;
+    }
+
 
     public Long getId() {
         return id;
@@ -67,15 +99,6 @@ public class User {
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public User(long id, String secondName, String firstName, String lastName, LocalDate birthDate, double salary) {
-        this.id = id;
-        this.secondName = secondName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
         this.salary = salary;
     }
 

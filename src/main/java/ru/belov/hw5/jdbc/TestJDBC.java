@@ -5,7 +5,7 @@ import ru.belov.hw5.jdbc.entity.PersonRequest;
 
 import java.sql.SQLException;
 
-public class testJDBC {
+public class TestJDBC {
     public static void main(String[] args) throws SQLException {
         UserDAOImpl userDAO = new UserDAOImpl();
 //        userDAO.create(new User("Белов", "Егор", "Владимирович", LocalDate.of(2002,8,21), 20000.456));
